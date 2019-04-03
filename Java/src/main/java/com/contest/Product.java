@@ -14,6 +14,9 @@ public class Product extends Item {
     }
 
     public Product updateSellInAndQuality() {
+        if (quality == 0) {
+            return new Product("Normal", sellIn - 1, 0);
+        }
         return new Product("Normal", sellIn - 1, quality - 1);
     }
 }

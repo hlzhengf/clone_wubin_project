@@ -16,4 +16,14 @@ public class GildedRoseTest {
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(19));
     }
+
+    @Test
+    public void quality_of_normal_product_should_be_0_if_quality_is_0() {
+        Product product = new Product("Normal", 10, 0);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(9));
+        assertThat(updatedProduct.getQuality(), is(0));
+    }
 }

@@ -26,4 +26,14 @@ public class GildedRoseTest {
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(0));
     }
+
+    @Test
+    public void quality_of_normal_product_should_degrade_twice_when_sell_by_date_passes() {
+        Product product = new Product("Normal", 0, 10);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(-1));
+        assertThat(updatedProduct.getQuality(), is(8));
+    }
 }

@@ -61,4 +61,12 @@ public class GildedRoseTest {
         Product product = new Product("Normal", 0, -1);
     }
 
+    @Test
+    public void quality_of_normal_product_should_be_less_than_50() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("quality should be less than 50.");
+
+        Product product = new Product("Normal", 0, 51);
+    }
+
 }

@@ -6,6 +6,9 @@ public class Product extends Item {
         if (quality < 0) {
             throw new IllegalArgumentException("quality should not be negative.");
         }
+        if (quality > 50) {
+            throw new IllegalArgumentException("quality should be less than 50.");
+        }
     }
 
     public int getSellIn() {

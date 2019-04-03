@@ -1,19 +1,19 @@
 package com.contest;
 
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 public class GildedRoseTest {
 
     @Test
-    public void should_fix_me() {
-        Item[] items = new Item[] { new Item("normal", 10, 20) };
-        GildedRose gildedRose = new GildedRose(items);
+    public void quality_of_normal_product_should_decrease_1_each_day() {
+        Product product = new Product("Normal", 10, 20);
         
-        gildedRose.updateQuality();
+        Product updatedProduct = product.updateSellInAndQuality();
 
-        assertEquals(9, (gildedRose.items[0]).sellIn);
-        assertEquals(19, gildedRose.items[0].quality);
+        assertThat(updatedProduct.getSellIn(), is(9));
+        assertThat(updatedProduct.getQuality(), is(19));
     }
 }

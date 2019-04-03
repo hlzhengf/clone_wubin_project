@@ -1,7 +1,10 @@
 package com.contest;
 
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -36,8 +39,8 @@ public class GildedRoseTest {
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(8));
     }
-    @Test
 
+    @Test
     public void quality_of_normal_product_should_degrade_twice_when_sell_by_date_passes_but_not_negative() {
         Product product = new Product("Normal", 0, 1);
 
@@ -46,4 +49,16 @@ public class GildedRoseTest {
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(0));
     }
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
+    @Test
+    public void quality_of_normal_product_should_not_be_negative() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("quality should not be negative.");
+
+        Product product = new Product("Normal", 0, -1);
+    }
+
 }

@@ -20,6 +20,9 @@ public class Product extends Item {
         if (sellIn <= 0 && quality > 2) {
             return new Product("Normal", sellIn - 1, quality - 2);
         }
+        if (sellIn <= 0 && quality == 1) {
+            return new Product("Normal", sellIn - 1, 0);
+        }
         return new Product("Normal", sellIn - 1, quality - 1);
     }
 }

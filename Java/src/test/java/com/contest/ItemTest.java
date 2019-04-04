@@ -71,7 +71,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_aged_brie_should_increase_1_each_day() {
-        Product product = new Product("Aged Brie", 1, 49);
+        Product product = new Product(Product.AGED_BRIE, 1, 49);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
@@ -81,7 +81,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_aged_brie_should_not_be_greater_than_50() {
-        Product product = new Product("Aged Brie", 1, Product.MAX_QUALITY);
+        Product product = new Product(Product.AGED_BRIE, 1, Product.MAX_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 

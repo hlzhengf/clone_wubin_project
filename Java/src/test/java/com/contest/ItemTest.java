@@ -15,7 +15,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_decrease_1_each_day() {
-        Product product = new Product(Product.NORMAL, 10, 20);
+        Product product = new NormalProduct(Product.NORMAL, 10, 20);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
@@ -26,7 +26,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_be_0_if_quality_is_0() {
-        Product product = new Product(Product.NORMAL, 10, Product.MIN_QUALITY);
+        Product product = new NormalProduct(Product.NORMAL, 10, Product.MIN_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
@@ -37,7 +37,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_degrade_twice_when_sell_by_date_passes() {
-        Product product = new Product(Product.NORMAL, 0, 10);
+        Product product = new NormalProduct(Product.NORMAL, 0, 10);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
@@ -48,7 +48,7 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_not_be_negative_when_sell_by_date_passes() {
-        Product product = new Product(Product.NORMAL, 0, 1);
+        Product product = new NormalProduct(Product.NORMAL, 0, 1);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
@@ -62,7 +62,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
-        Product product = new Product(Product.NORMAL, 0, -1);
+        Product product = new NormalProduct(Product.NORMAL, 0, -1);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
-        Product product = new Product(Product.NORMAL, 0, Product.MAX_QUALITY + 1);
+        Product product = new NormalProduct(Product.NORMAL, 0, Product.MAX_QUALITY + 1);
     }
 
     @Test

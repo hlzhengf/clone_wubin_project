@@ -143,77 +143,77 @@ public class ItemTest {
 
     @Test
     public void quality_of_backstage_pass_should_increase_by_1_more_than_10_days_before_opening() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 11, Product.MAX_QUALITY - 1);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 11, Product.MAX_QUALITY - 1);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(10));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_not_be_greater_than_50() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 11, Product.MAX_QUALITY);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 11, Product.MAX_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(10));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_increase_by_2_when_5_to_10_days_before_opening_10_days() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 10, Product.MAX_QUALITY - 2);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 10, Product.MAX_QUALITY - 2);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_increase_by_2_when_5_to_10_days_before_opening_6_days() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 6, Product.MAX_QUALITY - 2);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 6, Product.MAX_QUALITY - 2);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(5));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_increase_by_3_when_0_to_5_days_before_opening_5_days() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 5, Product.MAX_QUALITY - 3);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 5, Product.MAX_QUALITY - 3);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(4));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_increase_by_3_when_0_to_5_days_before_opening_1_day() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 1, Product.MAX_QUALITY - 3);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 1, Product.MAX_QUALITY - 3);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_backstage_pass_should_be_0_when_show_is_opening() {
-        Product product = new Product(Product.BACKSTAGE_PASS, 0, Product.MAX_QUALITY);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 0, Product.MAX_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getName(), is(BackstagePass.BACKSTAGE_PASS));
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
@@ -223,7 +223,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
-        Product product = new Product(Product.BACKSTAGE_PASS, 0, -1);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 0, -1);
     }
 
     @Test
@@ -231,7 +231,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
-        Product product = new Product(Product.BACKSTAGE_PASS, 0, Product.MAX_QUALITY + 1);
+        Product product = new BackstagePass(BackstagePass.BACKSTAGE_PASS, 0, Product.MAX_QUALITY + 1);
     }
 
 }

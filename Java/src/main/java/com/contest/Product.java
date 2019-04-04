@@ -2,7 +2,6 @@ package com.contest;
 
 public class Product extends Item {
 
-    public static final String BACKSTAGE_PASS = "Backstage Pass";
     public static final int MAX_QUALITY = 50;
     public static final int MIN_QUALITY = 0;
     public static final int QUALITY_SULFURAS = 80;
@@ -45,17 +44,17 @@ public class Product extends Item {
         if (Sulfuras.SULFURAS.equals(name)) {
             return new Product(Sulfuras.SULFURAS, sellIn - 1, QUALITY_SULFURAS);
         }
-        if (BACKSTAGE_PASS.equals(name) && sellIn > 10) {
-            return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 1));
+        if (BackstagePass.BACKSTAGE_PASS.equals(name) && sellIn > 10) {
+            return new Product(BackstagePass.BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 1));
         }
-        if (BACKSTAGE_PASS.equals(name) && sellIn > 5 && sellIn <= 10) {
-            return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 2));
+        if (BackstagePass.BACKSTAGE_PASS.equals(name) && sellIn > 5 && sellIn <= 10) {
+            return new Product(BackstagePass.BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 2));
         }
-        if (BACKSTAGE_PASS.equals(name) && sellIn > 0 && sellIn <= 5) {
-            return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 3));
+        if (BackstagePass.BACKSTAGE_PASS.equals(name) && sellIn > 0 && sellIn <= 5) {
+            return new Product(BackstagePass.BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 3));
         }
-        if (BACKSTAGE_PASS.equals(name) && sellIn <= 0) {
-            return new Product(BACKSTAGE_PASS, sellIn - 1, Product.MIN_QUALITY);
+        if (BackstagePass.BACKSTAGE_PASS.equals(name) && sellIn <= 0) {
+            return new Product(BackstagePass.BACKSTAGE_PASS, sellIn - 1, Product.MIN_QUALITY);
         }
         if (quality == MIN_QUALITY) {
             return new Product(NormalProduct.NORMAL, sellIn - 1, MIN_QUALITY);

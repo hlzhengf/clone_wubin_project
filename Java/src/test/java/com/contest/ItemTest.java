@@ -19,6 +19,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(19));
     }
@@ -29,6 +30,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
@@ -39,6 +41,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(8));
     }
@@ -49,6 +52,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
@@ -75,6 +79,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.AGED_BRIE));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
@@ -85,6 +90,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.AGED_BRIE));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
@@ -111,6 +117,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.SULFURAS));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
     }
@@ -121,6 +128,7 @@ public class ItemTest {
 
         Product updatedProduct = product.updateSellInAndQuality();
 
+        assertThat(updatedProduct.getName(), is(Product.SULFURAS));
         assertThat(updatedProduct.getSellIn(), is(-2));
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
     }

@@ -22,6 +22,10 @@ public class Product extends Item {
         }
     }
 
+    public String getName() {
+        return super.name;
+    }
+
     public int getSellIn() {
         return super.sellIn;
     }

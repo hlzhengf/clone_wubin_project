@@ -2,7 +2,6 @@ package com.contest;
 
 public class Product extends Item {
 
-    public static final String NORMAL = "Normal";
     public static final String SULFURAS = "Sulfuras";
     public static final String BACKSTAGE_PASS = "Backstage Pass";
     public static final int MAX_QUALITY = 50;
@@ -60,15 +59,15 @@ public class Product extends Item {
             return new Product(BACKSTAGE_PASS, sellIn - 1, Product.MIN_QUALITY);
         }
         if (quality == MIN_QUALITY) {
-            return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
+            return new Product(NormalProduct.NORMAL, sellIn - 1, MIN_QUALITY);
         }
         if (sellIn <= 0 && quality > 2) {
-            return new Product(NORMAL, sellIn - 1, quality - 2);
+            return new Product(NormalProduct.NORMAL, sellIn - 1, quality - 2);
         }
         if (sellIn <= 0 && quality == 1) {
-            return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
+            return new Product(NormalProduct.NORMAL, sellIn - 1, MIN_QUALITY);
         }
-        return new Product(NORMAL, sellIn - 1, quality - 1);
+        return new Product(NormalProduct.NORMAL, sellIn - 1, quality - 1);
     }
 
     private int makeQualityInRange(int quality) {

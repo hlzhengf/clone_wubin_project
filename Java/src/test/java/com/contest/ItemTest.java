@@ -15,44 +15,44 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_decrease_1_each_day() {
-        Product product = new NormalProduct(Product.NORMAL, 10, 20);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 10, 20);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.NORMAL));
+        assertThat(updatedProduct.getName(), is(NormalProduct.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(19));
     }
 
     @Test
     public void quality_of_normal_product_should_be_0_if_quality_is_0() {
-        Product product = new NormalProduct(Product.NORMAL, 10, Product.MIN_QUALITY);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 10, Product.MIN_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.NORMAL));
+        assertThat(updatedProduct.getName(), is(NormalProduct.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(9));
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
 
     @Test
     public void quality_of_normal_product_should_degrade_twice_when_sell_by_date_passes() {
-        Product product = new NormalProduct(Product.NORMAL, 0, 10);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 0, 10);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.NORMAL));
+        assertThat(updatedProduct.getName(), is(NormalProduct.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(8));
     }
 
     @Test
     public void quality_of_normal_product_should_not_be_negative_when_sell_by_date_passes() {
-        Product product = new NormalProduct(Product.NORMAL, 0, 1);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 0, 1);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.NORMAL));
+        assertThat(updatedProduct.getName(), is(NormalProduct.NORMAL));
         assertThat(updatedProduct.getSellIn(), is(-1));
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
@@ -62,7 +62,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
-        Product product = new NormalProduct(Product.NORMAL, 0, -1);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 0, -1);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
-        Product product = new NormalProduct(Product.NORMAL, 0, Product.MAX_QUALITY + 1);
+        Product product = new NormalProduct(NormalProduct.NORMAL, 0, Product.MAX_QUALITY + 1);
     }
 
     @Test

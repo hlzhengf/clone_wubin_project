@@ -75,22 +75,22 @@ public class ItemTest {
 
     @Test
     public void quality_of_aged_brie_should_increase_1_each_day() {
-        Product product = new Product(Product.AGED_BRIE, 1, 49);
+        Product product = new AgedBrie(AgedBrie.AGED_BRIE, 1, 49);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.AGED_BRIE));
+        assertThat(updatedProduct.getName(), is(AgedBrie.AGED_BRIE));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
     @Test
     public void quality_of_aged_brie_should_not_be_greater_than_50() {
-        Product product = new Product(Product.AGED_BRIE, 1, Product.MAX_QUALITY);
+        Product product = new AgedBrie(AgedBrie.AGED_BRIE, 1, Product.MAX_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.AGED_BRIE));
+        assertThat(updatedProduct.getName(), is(AgedBrie.AGED_BRIE));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
@@ -100,7 +100,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
-        Product product = new Product(Product.AGED_BRIE, 0, -1);
+        Product product = new AgedBrie(AgedBrie.AGED_BRIE, 0, -1);
     }
 
     @Test
@@ -108,7 +108,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
-        Product product = new Product(Product.AGED_BRIE, 0, Product.MAX_QUALITY + 1);
+        Product product = new AgedBrie(AgedBrie.AGED_BRIE, 0, Product.MAX_QUALITY + 1);
     }
 
     @Test

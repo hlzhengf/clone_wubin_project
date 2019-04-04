@@ -2,7 +2,6 @@ package com.contest;
 
 public class Product extends Item {
 
-    public static final String AGED_BRIE = "Aged Brie";
     public static final String NORMAL = "Normal";
     public static final String SULFURAS = "Sulfuras";
     public static final String BACKSTAGE_PASS = "Backstage Pass";
@@ -39,11 +38,11 @@ public class Product extends Item {
     }
 
     public Product updateSellInAndQuality() {
-        if (AGED_BRIE.equals(name) && quality >= MAX_QUALITY) {
-            return new Product(AGED_BRIE, sellIn - 1, MAX_QUALITY);
+        if (AgedBrie.AGED_BRIE.equals(name) && quality >= MAX_QUALITY) {
+            return new Product(AgedBrie.AGED_BRIE, sellIn - 1, MAX_QUALITY);
         }
-        if (AGED_BRIE.equals(name)) {
-            return new Product(AGED_BRIE, sellIn - 1, quality + 1);
+        if (AgedBrie.AGED_BRIE.equals(name)) {
+            return new Product(AgedBrie.AGED_BRIE, sellIn - 1, quality + 1);
         }
         if (SULFURAS.equals(name)) {
             return new Product(SULFURAS, sellIn - 1, QUALITY_SULFURAS);

@@ -11,4 +11,9 @@ public class Sulfuras extends Product {
             throw new IllegalArgumentException(Sulfuras.QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
         }
     }
+
+    @Override
+    public Product updateSellInAndQuality() {
+        return new Sulfuras(Sulfuras.SULFURAS, sellIn - 1, QUALITY_SULFURAS);
+    }
 }

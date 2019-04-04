@@ -218,4 +218,12 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
 
+    @Test
+    public void quality_of_backstage_pass_should_not_be_negative_when_created() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
+
+        Product product = new Product(Product.BACKSTAGE_PASS, 0, -1);
+    }
+
 }

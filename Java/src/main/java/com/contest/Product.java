@@ -57,6 +57,9 @@ public class Product extends Item {
         if (BACKSTAGE_PASS.equals(name) && sellIn > 0 && sellIn <= 5) {
             return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 3));
         }
+        if (BACKSTAGE_PASS.equals(name) && sellIn <= 0) {
+            return new Product(BACKSTAGE_PASS, sellIn - 1, Product.MIN_QUALITY);
+        }
         if (quality == MIN_QUALITY) {
             return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
         }

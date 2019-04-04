@@ -136,7 +136,7 @@ public class ItemTest {
     @Test
     public void quality_of_sulfuras_should_be_always_80_when_created() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage(Product.QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
+        exceptionRule.expectMessage(Sulfuras.QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
 
         Product product = new Sulfuras(Sulfuras.SULFURAS, 0, 79);
     }

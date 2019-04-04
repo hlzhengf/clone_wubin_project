@@ -97,4 +97,12 @@ public class ItemTest {
         Product product = new Product(Product.AGED_BRIE, 0, -1);
     }
 
+    @Test
+    public void quality_of_aged_brie_should_be_less_than_50() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
+
+        Product product = new Product(Product.AGED_BRIE, 0, Product.MAX_QUALITY + 1);
+    }
+
 }

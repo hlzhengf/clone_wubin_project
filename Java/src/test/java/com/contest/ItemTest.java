@@ -22,12 +22,12 @@ public class ItemTest {
 
     @Test
     public void quality_of_normal_product_should_be_0_if_quality_is_0() {
-        Product product = new Product(Product.NORMAL, 10, 0);
+        Product product = new Product(Product.NORMAL, 10, Product.MIN_QUALITY);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
         assertThat(updatedProduct.getSellIn(), is(9));
-        assertThat(updatedProduct.getQuality(), is(0));
+        assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ItemTest {
         Product updatedProduct = product.updateSellInAndQuality();
 
         assertThat(updatedProduct.getSellIn(), is(-1));
-        assertThat(updatedProduct.getQuality(), is(0));
+        assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
 
     @Rule
@@ -66,7 +66,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage("quality should be less than 50.");
 
-        Product product = new Product(Product.NORMAL, 0, 51);
+        Product product = new Product(Product.NORMAL, 0, Product.MAX_QUALITY + 1);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ItemTest {
         Product updatedProduct = product.updateSellInAndQuality();
 
         assertThat(updatedProduct.getSellIn(), is(0));
-        assertThat(updatedProduct.getQuality(), is(50));
+        assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
 }

@@ -4,13 +4,15 @@ public class Product extends Item {
 
     public static final String AGED_BRIE = "Aged Brie";
     public static final String NORMAL = "Normal";
+    public static final int MAX_QUALITY = 50;
+    public static final int MIN_QUALITY = 0;
 
     public Product(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
-        if (quality < 0) {
+        if (quality < MIN_QUALITY) {
             throw new IllegalArgumentException("quality should not be negative.");
         }
-        if (quality > 50) {
+        if (quality > MAX_QUALITY) {
             throw new IllegalArgumentException("quality should be less than 50.");
         }
     }
@@ -27,14 +29,14 @@ public class Product extends Item {
         if (AGED_BRIE.equals(name)) {
             return new Product(AGED_BRIE, sellIn - 1, quality + 1);
         }
-        if (quality == 0) {
-            return new Product(NORMAL, sellIn - 1, 0);
+        if (quality == MIN_QUALITY) {
+            return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
         }
         if (sellIn <= 0 && quality > 2) {
             return new Product(NORMAL, sellIn - 1, quality - 2);
         }
         if (sellIn <= 0 && quality == 1) {
-            return new Product(NORMAL, sellIn - 1, 0);
+            return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
         }
         return new Product(NORMAL, sellIn - 1, quality - 1);
     }

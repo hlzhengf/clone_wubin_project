@@ -1,6 +1,10 @@
 package com.contest;
 
 public class Product extends Item {
+
+    public static final String AGED_BRIE = "Aged Brie";
+    public static final String NORMAL = "Normal";
+
     public Product(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         if (quality < 0) {
@@ -20,18 +24,18 @@ public class Product extends Item {
     }
 
     public Product updateSellInAndQuality() {
-        if ("Aged Brie".equals(name)) {
-            return new Product("Aged Brie", sellIn - 1, quality + 1);
+        if (AGED_BRIE.equals(name)) {
+            return new Product(AGED_BRIE, sellIn - 1, quality + 1);
         }
         if (quality == 0) {
-            return new Product("Normal", sellIn - 1, 0);
+            return new Product(NORMAL, sellIn - 1, 0);
         }
         if (sellIn <= 0 && quality > 2) {
-            return new Product("Normal", sellIn - 1, quality - 2);
+            return new Product(NORMAL, sellIn - 1, quality - 2);
         }
         if (sellIn <= 0 && quality == 1) {
-            return new Product("Normal", sellIn - 1, 0);
+            return new Product(NORMAL, sellIn - 1, 0);
         }
-        return new Product("Normal", sellIn - 1, quality - 1);
+        return new Product(NORMAL, sellIn - 1, quality - 1);
     }
 }

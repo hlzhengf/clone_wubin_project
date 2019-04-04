@@ -115,4 +115,14 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
     }
 
+    @Test
+    public void quality_of_sulfuras_should_be_always_80_even_sell_by_date_passes() {
+        Product product = new Product(Product.SULFURAS, -1, Product.QUALITY_SULFURAS);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(-2));
+        assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
+    }
+
 }

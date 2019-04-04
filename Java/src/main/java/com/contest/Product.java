@@ -20,6 +20,9 @@ public class Product extends Item {
     }
 
     public Product updateSellInAndQuality() {
+        if ("Aged Brie".equals(name)) {
+            return new Product("Aged Brie", sellIn - 1, quality + 1);
+        }
         if (quality == 0) {
             return new Product("Normal", sellIn - 1, 0);
         }

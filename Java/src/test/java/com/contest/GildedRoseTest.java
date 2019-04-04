@@ -41,7 +41,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_of_normal_product_should_degrade_twice_when_sell_by_date_passes_but_not_negative() {
+    public void quality_of_normal_product_should_not_be_negative_when_sell_by_date_passes() {
         Product product = new Product("Normal", 0, 1);
 
         Product updatedProduct = product.updateSellInAndQuality();
@@ -67,6 +67,16 @@ public class GildedRoseTest {
         exceptionRule.expectMessage("quality should be less than 50.");
 
         Product product = new Product("Normal", 0, 51);
+    }
+
+    @Test
+    public void quality_of_aged_brie_should_increase_1_each_day() {
+        Product product = new Product("Aged Brie", 1, 49);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(0));
+        assertThat(updatedProduct.getQuality(), is(50));
     }
 
 }

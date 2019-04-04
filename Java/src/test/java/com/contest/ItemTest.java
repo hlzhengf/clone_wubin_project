@@ -9,6 +9,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 public class ItemTest {
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
 
     @Test
     public void quality_of_normal_product_should_decrease_1_each_day() {
@@ -50,9 +53,6 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.MIN_QUALITY));
     }
 
-    @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
-
     @Test
     public void quality_of_normal_product_should_not_be_negative() {
         exceptionRule.expect(IllegalArgumentException.class);
@@ -87,6 +87,14 @@ public class ItemTest {
 
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
+    }
+
+    @Test
+    public void quality_of_aged_brie_should_not_be_negative() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
+
+        Product product = new Product(Product.AGED_BRIE, 0, -1);
     }
 
 }

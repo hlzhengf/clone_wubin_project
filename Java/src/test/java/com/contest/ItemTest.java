@@ -174,4 +174,15 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
+    @Test
+    public void quality_of_backstage_pass_should_increase_by_2_when_5_to_10_days_before_opening_6_days() {
+        Product product = new Product(Product.BACKSTAGE_PASS, 6, Product.MAX_QUALITY - 2);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getSellIn(), is(5));
+        assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
+    }
+
 }

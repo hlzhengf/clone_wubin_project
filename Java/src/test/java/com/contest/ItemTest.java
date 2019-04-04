@@ -56,7 +56,7 @@ public class ItemTest {
     @Test
     public void quality_of_normal_product_should_not_be_negative() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage("quality should not be negative.");
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
         Product product = new Product(Product.NORMAL, 0, -1);
     }
@@ -64,7 +64,7 @@ public class ItemTest {
     @Test
     public void quality_of_normal_product_should_be_less_than_50() {
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expectMessage("quality should be less than 50.");
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
         Product product = new Product(Product.NORMAL, 0, Product.MAX_QUALITY + 1);
     }

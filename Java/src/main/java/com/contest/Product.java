@@ -6,14 +6,16 @@ public class Product extends Item {
     public static final String NORMAL = "Normal";
     public static final int MAX_QUALITY = 50;
     public static final int MIN_QUALITY = 0;
+    public static final String QUALITY_SHOULD_NOT_BE_NEGATIVE = "quality should not be negative.";
+    public static final String QUALITY_SHOULD_BE_LESS_THAN_50 = "quality should be less than 50.";
 
     public Product(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         if (quality < MIN_QUALITY) {
-            throw new IllegalArgumentException("quality should not be negative.");
+            throw new IllegalArgumentException(QUALITY_SHOULD_NOT_BE_NEGATIVE);
         }
         if (quality > MAX_QUALITY) {
-            throw new IllegalArgumentException("quality should be less than 50.");
+            throw new IllegalArgumentException(QUALITY_SHOULD_BE_LESS_THAN_50);
         }
     }
 

@@ -10,10 +10,13 @@ public class Product extends Item {
     public static final int QUALITY_SULFURAS = 80;
     public static final String QUALITY_SHOULD_NOT_BE_NEGATIVE = "quality should not be negative.";
     public static final String QUALITY_SHOULD_BE_LESS_THAN_50 = "quality should be less than 50.";
-    private static final String QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80 = "quality of sulfuras should always be 80.";
+    public static final String QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80 = "quality of sulfuras should always be 80.";
 
     public Product(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
+        if (SULFURAS.equals(name) && quality != QUALITY_SULFURAS) {
+            throw new IllegalArgumentException(QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
+        }
         if (!SULFURAS.equals(name) && quality < MIN_QUALITY) {
             throw new IllegalArgumentException(QUALITY_SHOULD_NOT_BE_NEGATIVE);
         }

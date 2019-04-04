@@ -58,7 +58,7 @@ public class ItemTest {
     }
 
     @Test
-    public void quality_of_normal_product_should_not_be_negative() {
+    public void quality_of_normal_product_should_not_be_negative_when_created() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
@@ -66,7 +66,7 @@ public class ItemTest {
     }
 
     @Test
-    public void quality_of_normal_product_should_be_less_than_50() {
+    public void quality_of_normal_product_should_be_less_than_50_when_created() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
@@ -96,7 +96,7 @@ public class ItemTest {
     }
 
     @Test
-    public void quality_of_aged_brie_should_not_be_negative() {
+    public void quality_of_aged_brie_should_not_be_negative_when_created() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_NOT_BE_NEGATIVE);
 
@@ -104,7 +104,7 @@ public class ItemTest {
     }
 
     @Test
-    public void quality_of_aged_brie_should_be_less_than_50() {
+    public void quality_of_aged_brie_should_be_less_than_50_when_created() {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
 
@@ -131,6 +131,14 @@ public class ItemTest {
         assertThat(updatedProduct.getName(), is(Product.SULFURAS));
         assertThat(updatedProduct.getSellIn(), is(-2));
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
+    }
+
+    @Test
+    public void quality_of_sulfuras_should_be_always_80_when_created() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(Product.QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
+
+        Product product = new Product(Product.SULFURAS, 0, 79);
     }
 
 }

@@ -152,4 +152,15 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
+    @Test
+    public void quality_of_backstage_pass_should_not_be_greater_than_50() {
+        Product product = new Product(Product.BACKSTAGE_PASS, 11, Product.MAX_QUALITY);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getSellIn(), is(10));
+        assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
+    }
+
 }

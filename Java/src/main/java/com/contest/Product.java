@@ -49,7 +49,7 @@ public class Product extends Item {
             return new Product(SULFURAS, sellIn - 1, QUALITY_SULFURAS);
         }
         if (BACKSTAGE_PASS.equals(name)) {
-            return new Product(BACKSTAGE_PASS, sellIn - 1, quality + 1);
+            return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 1));
         }
         if (quality == MIN_QUALITY) {
             return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
@@ -61,5 +61,9 @@ public class Product extends Item {
             return new Product(NORMAL, sellIn - 1, MIN_QUALITY);
         }
         return new Product(NORMAL, sellIn - 1, quality - 1);
+    }
+
+    private int makeQualityInRange(int quality) {
+        return quality > 50 ? 50 : quality;
     }
 }

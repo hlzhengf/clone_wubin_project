@@ -226,4 +226,12 @@ public class ItemTest {
         Product product = new Product(Product.BACKSTAGE_PASS, 0, -1);
     }
 
+    @Test
+    public void quality_of_backstage_pass_should_be_less_than_50_when_created() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage(Product.QUALITY_SHOULD_BE_LESS_THAN_50);
+
+        Product product = new Product(Product.BACKSTAGE_PASS, 0, Product.MAX_QUALITY + 1);
+    }
+
 }

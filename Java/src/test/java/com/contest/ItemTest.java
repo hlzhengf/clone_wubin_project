@@ -105,4 +105,14 @@ public class ItemTest {
         Product product = new Product(Product.AGED_BRIE, 0, Product.MAX_QUALITY + 1);
     }
 
+    @Test
+    public void quality_of_sulfuras_should_be_always_80() {
+        Product product = new Product(Product.SULFURAS, 1, Product.QUALITY_SULFURAS);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(0));
+        assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
+    }
+
 }

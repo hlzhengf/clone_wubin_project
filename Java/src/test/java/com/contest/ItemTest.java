@@ -113,22 +113,22 @@ public class ItemTest {
 
     @Test
     public void quality_of_sulfuras_should_be_always_80() {
-        Product product = new Product(Product.SULFURAS, 1, Product.QUALITY_SULFURAS);
+        Product product = new Sulfuras(Sulfuras.SULFURAS, 1, Product.QUALITY_SULFURAS);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.SULFURAS));
+        assertThat(updatedProduct.getName(), is(Sulfuras.SULFURAS));
         assertThat(updatedProduct.getSellIn(), is(0));
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
     }
 
     @Test
     public void quality_of_sulfuras_should_be_always_80_even_sell_by_date_passes() {
-        Product product = new Product(Product.SULFURAS, -1, Product.QUALITY_SULFURAS);
+        Product product = new Sulfuras(Sulfuras.SULFURAS, -1, Product.QUALITY_SULFURAS);
 
         Product updatedProduct = product.updateSellInAndQuality();
 
-        assertThat(updatedProduct.getName(), is(Product.SULFURAS));
+        assertThat(updatedProduct.getName(), is(Sulfuras.SULFURAS));
         assertThat(updatedProduct.getSellIn(), is(-2));
         assertThat(updatedProduct.getQuality(), is(Product.QUALITY_SULFURAS));
     }
@@ -138,7 +138,7 @@ public class ItemTest {
         exceptionRule.expect(IllegalArgumentException.class);
         exceptionRule.expectMessage(Product.QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
 
-        Product product = new Product(Product.SULFURAS, 0, 79);
+        Product product = new Sulfuras(Sulfuras.SULFURAS, 0, 79);
     }
 
     @Test

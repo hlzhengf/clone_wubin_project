@@ -2,7 +2,6 @@ package com.contest;
 
 public class Product extends Item {
 
-    public static final String SULFURAS = "Sulfuras";
     public static final String BACKSTAGE_PASS = "Backstage Pass";
     public static final int MAX_QUALITY = 50;
     public static final int MIN_QUALITY = 0;
@@ -13,13 +12,13 @@ public class Product extends Item {
 
     public Product(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
-        if (SULFURAS.equals(name) && quality != QUALITY_SULFURAS) {
+        if (Sulfuras.SULFURAS.equals(name) && quality != QUALITY_SULFURAS) {
             throw new IllegalArgumentException(QUALITY_OF_SULFURAS_SHOULD_ALWAYS_BE_80);
         }
-        if (!SULFURAS.equals(name) && quality < MIN_QUALITY) {
+        if (!Sulfuras.SULFURAS.equals(name) && quality < MIN_QUALITY) {
             throw new IllegalArgumentException(QUALITY_SHOULD_NOT_BE_NEGATIVE);
         }
-        if (!SULFURAS.equals(name) && quality > MAX_QUALITY) {
+        if (!Sulfuras.SULFURAS.equals(name) && quality > MAX_QUALITY) {
             throw new IllegalArgumentException(QUALITY_SHOULD_BE_LESS_THAN_50);
         }
     }
@@ -43,8 +42,8 @@ public class Product extends Item {
         if (AgedBrie.AGED_BRIE.equals(name)) {
             return new Product(AgedBrie.AGED_BRIE, sellIn - 1, quality + 1);
         }
-        if (SULFURAS.equals(name)) {
-            return new Product(SULFURAS, sellIn - 1, QUALITY_SULFURAS);
+        if (Sulfuras.SULFURAS.equals(name)) {
+            return new Product(Sulfuras.SULFURAS, sellIn - 1, QUALITY_SULFURAS);
         }
         if (BACKSTAGE_PASS.equals(name) && sellIn > 10) {
             return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 1));

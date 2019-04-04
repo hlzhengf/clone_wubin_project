@@ -48,8 +48,11 @@ public class Product extends Item {
         if (SULFURAS.equals(name)) {
             return new Product(SULFURAS, sellIn - 1, QUALITY_SULFURAS);
         }
-        if (BACKSTAGE_PASS.equals(name)) {
+        if (BACKSTAGE_PASS.equals(name) && sellIn > 10) {
             return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 1));
+        }
+        if (BACKSTAGE_PASS.equals(name) && sellIn > 5 && sellIn <= 10) {
+            return new Product(BACKSTAGE_PASS, sellIn - 1, makeQualityInRange(quality + 2));
         }
         if (quality == MIN_QUALITY) {
             return new Product(NORMAL, sellIn - 1, MIN_QUALITY);

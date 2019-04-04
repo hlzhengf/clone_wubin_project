@@ -5,6 +5,7 @@ public class Product extends Item {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String NORMAL = "Normal";
     public static final String SULFURAS = "Sulfuras";
+    public static final String BACKSTAGE_PASS = "Backstage Pass";
     public static final int MAX_QUALITY = 50;
     public static final int MIN_QUALITY = 0;
     public static final int QUALITY_SULFURAS = 80;
@@ -46,6 +47,9 @@ public class Product extends Item {
         }
         if (SULFURAS.equals(name)) {
             return new Product(SULFURAS, sellIn - 1, QUALITY_SULFURAS);
+        }
+        if (BACKSTAGE_PASS.equals(name)) {
+            return new Product(BACKSTAGE_PASS, sellIn - 1, quality + 1);
         }
         if (quality == MIN_QUALITY) {
             return new Product(NORMAL, sellIn - 1, MIN_QUALITY);

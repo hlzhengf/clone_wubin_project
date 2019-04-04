@@ -141,4 +141,15 @@ public class ItemTest {
         Product product = new Product(Product.SULFURAS, 0, 79);
     }
 
+    @Test
+    public void quality_of_backstage_pass_should_increase_by_1_more_than_10_days_before_opening() {
+        Product product = new Product(Product.BACKSTAGE_PASS, 11, Product.MAX_QUALITY - 1);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getName(), is(Product.BACKSTAGE_PASS));
+        assertThat(updatedProduct.getSellIn(), is(10));
+        assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
+    }
+
 }

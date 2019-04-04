@@ -79,4 +79,14 @@ public class ItemTest {
         assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
     }
 
+    @Test
+    public void quality_of_aged_brie_should_not_be_greater_than_50() {
+        Product product = new Product("Aged Brie", 1, Product.MAX_QUALITY);
+
+        Product updatedProduct = product.updateSellInAndQuality();
+
+        assertThat(updatedProduct.getSellIn(), is(0));
+        assertThat(updatedProduct.getQuality(), is(Product.MAX_QUALITY));
+    }
+
 }

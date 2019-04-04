@@ -26,6 +26,9 @@ public class Product extends Item {
     }
 
     public Product updateSellInAndQuality() {
+        if (AGED_BRIE.equals(name) && quality >= MAX_QUALITY) {
+            return new Product(AGED_BRIE, sellIn - 1, MAX_QUALITY);
+        }
         if (AGED_BRIE.equals(name)) {
             return new Product(AGED_BRIE, sellIn - 1, quality + 1);
         }
